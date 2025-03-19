@@ -49,7 +49,7 @@ export function getMetaData(data: MetaDataInput): Metadata {
     title: `${meta.title}`,
     description: meta.description,
     metadataBase: new URL(baseUrl),
-    creator: "Talks That Matter",
+    creator: "Talks That Matter!",
     authors: [{ name: "Roboto" }],
     icons: {
       icon: `${baseUrl}/favicon.ico`,
