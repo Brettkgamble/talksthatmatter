@@ -10,6 +10,7 @@ type HeroBlockProps = PagebuilderType<"hero">;
 
 export function HeroBlock({
   title,
+  titleHighlight,
   buttons,
   badge,
   image,
@@ -22,7 +23,8 @@ export function HeroBlock({
           <div className="grid h-full grid-rows-[auto_1fr_auto] gap-4 items-center justify-items-center text-center lg:items-start lg:justify-items-start lg:text-left">
             <Badge variant="secondary">{badge}</Badge>
             <div className="grid gap-4">
-              <h1 className="text-4xl lg:text-6xl font-semibold text-balance">
+              {/* <h1 className="text-4xl lg:text-6xl font-semibold text-balance text-yellow-400"> */}
+              <h1 className={`text-4xl lg:text-6xl font-semibold text-balance ${!titleHighlight ? 'text-white' : 'text-yellow-400'}`}>
                 {title}
               </h1>
               <RichText

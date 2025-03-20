@@ -286,6 +286,7 @@ export type Hero = {
   _type: "hero";
   badge?: string;
   title?: string;
+  titleHighlight?: boolean;
   richText?: Array<
     | {
         children?: Array<{
@@ -1137,6 +1138,7 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "hero";
         badge?: string;
+        titleHighlight?: boolean;
         title?: string;
         richText: Array<
           | {
@@ -1554,6 +1556,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "hero";
         badge?: string;
+        titleHighlight?: boolean;
         title?: string;
         richText: Array<
           | {

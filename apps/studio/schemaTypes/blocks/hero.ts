@@ -19,6 +19,12 @@ export const hero = defineType({
       type: "string",
       title: "Title",
     }),
+    defineField({
+      name: "titleHighlight",
+      type: "boolean",
+      initialValue: false,
+      title: "Title Highlight",
+    }),
     richTextField,
     defineField({
       name: "image",
