@@ -1,8 +1,10 @@
+import { Images } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const splitImage = defineType({
   name: "splitImage",
   type: "object",
+  icon: Images,
   fields: [
     defineField({
       name: "orientation",
@@ -28,12 +30,10 @@ export const splitImage = defineType({
       title: "title",
       media: "image",
     },
-    prepare({ title, media }) {
-      return {
-        title,
-        subtitle: "Text and Image",
-        media,
-      };
-    },
+    prepare: ({ title, media }) => ({
+      title,
+      subtitle: "Text and Image",
+      media,
+    }),
   },
 });
