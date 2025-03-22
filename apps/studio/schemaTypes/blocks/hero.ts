@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Star } from "lucide-react";
 import { defineField, defineType } from "sanity";
 

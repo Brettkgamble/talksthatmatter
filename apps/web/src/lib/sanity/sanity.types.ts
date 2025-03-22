@@ -68,6 +68,23 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type SplitImage = {
+  _type: "splitImage";
+  orientation?: "imageLeft" | "imageRight";
+  title?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type SubscribeNewsletter = {
   _type: "subscribeNewsletter";
   title?: string;
@@ -357,6 +374,9 @@ export type PageBuilder = Array<
   | ({
       _key: string;
     } & SubscribeNewsletter)
+  | ({
+      _key: string;
+    } & SplitImage)
 >;
 
 export type Button = {
@@ -914,6 +934,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | SplitImage
   | SubscribeNewsletter
   | ImageLinkCards
   | FaqAccordion
@@ -1138,8 +1159,8 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "hero";
         badge?: string;
-        titleHighlight?: boolean;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1285,6 +1306,23 @@ export type QueryHomePageDataResult = {
           openInNewTab: boolean | null;
           href: string | null;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "splitImage";
+        orientation?: "imageLeft" | "imageRight";
+        title?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
       }
     | {
         _key: string;
@@ -1556,8 +1594,8 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "hero";
         badge?: string;
-        titleHighlight?: boolean;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1703,6 +1741,23 @@ export type QuerySlugPageDataResult = {
           openInNewTab: boolean | null;
           href: string | null;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "splitImage";
+        orientation?: "imageLeft" | "imageRight";
+        title?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
       }
     | {
         _key: string;
@@ -1975,6 +2030,7 @@ export type QueryBlogIndexPageDataResult = {
         _type: "hero";
         badge?: string;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -2120,6 +2176,23 @@ export type QueryBlogIndexPageDataResult = {
           openInNewTab: boolean | null;
           href: string | null;
         }> | null;
+      }
+    | {
+        _key: string;
+        _type: "splitImage";
+        orientation?: "imageLeft" | "imageRight";
+        title?: string;
+        image?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
       }
     | {
         _key: string;

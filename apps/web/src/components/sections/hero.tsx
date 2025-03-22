@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Badge } from "@workspace/ui/components/badge";
 
 import type { PagebuilderType } from "@/types";
