@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { stegaClean } from "next-sanity";
 
 import type { PagebuilderType } from "@/types";

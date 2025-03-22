@@ -32,12 +32,10 @@ export const splitImage = defineType({
   preview: {
     select: {
       title: "title",
-      media: "image",
     },
-    prepare: ({ title, media }) => ({
+    prepare: ({ title }) => ({
       title,
       subtitle: "Text and Image",
-      media,
     }),
   },
 });

@@ -1,3 +1,4 @@
+import { SplitImage } from "@/components/sections/split-image";
 import { defineQuery } from "next-sanity";
 
 // Base fragments for reusable query parts
@@ -146,6 +147,13 @@ const subscribeNewsletterBlock = /* groq */ `
   }
 `;
 
+const splitImage = /* groq */ `
+  _type == "splitImage" => {
+    ...,
+    ${imageFragment},
+  }
+`;
+
 const pageBuilderFragment = /* groq */ `
   pageBuilder[]{
     ...,
@@ -153,6 +161,7 @@ const pageBuilderFragment = /* groq */ `
     ${ctaBlock},
     ${heroBlock},
     ${faqAccordionBlock},
+    ${splitImage},
     ${subscribeNewsletterBlock},
     ${imageLinkCardsBlock}
   }
