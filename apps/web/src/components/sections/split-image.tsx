@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { stegaClean } from "next-sanity";
 
 import type { PagebuilderType } from "@/types";

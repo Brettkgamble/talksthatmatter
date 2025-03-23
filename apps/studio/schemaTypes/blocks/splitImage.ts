@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Images } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
