@@ -58,7 +58,6 @@ export function PageBuilder({
       return currentPageBuilder;
     },
   );
-  console.log("Pagebuilder", pageBuilder);
 
   return (
     <main
