@@ -8,6 +8,11 @@ export const splitImage = defineType({
   icon: Images,
   fields: [
     defineField({
+      name: "badge",
+      type: "string",
+      title: "Badge",
+    }),
+    defineField({
       name: "orientation",
       type: "string",
       options: {
@@ -21,6 +26,12 @@ export const splitImage = defineType({
     defineField({
       name: "title",
       type: "string",
+    }),
+    defineField({
+      name: "titleHighlight",
+      type: "boolean",
+      initialValue: false,
+      title: "Title Highlight",
     }),
     defineField({
       name: "image",

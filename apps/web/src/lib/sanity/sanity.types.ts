@@ -70,8 +70,10 @@ export type Geopoint = {
 
 export type SplitImage = {
   _type: "splitImage";
+  badge?: string;
   orientation?: "imageLeft" | "imageRight" | "imageCenter";
   title?: string;
+  titleHighlight?: boolean;
   image?: {
     asset?: {
       _ref: string;
@@ -1310,8 +1312,10 @@ export type QueryHomePageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
+        badge?: string;
         orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
+        titleHighlight?: boolean;
         image: {
           asset?: {
             _ref: string;
@@ -1748,8 +1752,10 @@ export type QuerySlugPageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
+        badge?: string;
         orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
+        titleHighlight?: boolean;
         image: {
           asset?: {
             _ref: string;
@@ -2186,8 +2192,10 @@ export type QueryBlogIndexPageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
+        badge?: string;
         orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
+        titleHighlight?: boolean;
         image: {
           asset?: {
             _ref: string;

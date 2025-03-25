@@ -338,6 +338,13 @@
             "value": "splitImage"
           }
         },
+        "badge": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "orientation": {
           "type": "objectAttribute",
           "value": {
@@ -363,6 +370,13 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
+          },
+          "optional": true
+        },
+        "titleHighlight": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
           },
           "optional": true
         },
