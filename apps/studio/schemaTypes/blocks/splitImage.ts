@@ -14,6 +14,7 @@ export const splitImage = defineType({
         list: [
           { value: "imageLeft", title: "Image Left" },
           { value: "imageRight", title: "Image Right" },
+          { value: "imageCenter", title: "Image Center"}
         ],
       },
     }),

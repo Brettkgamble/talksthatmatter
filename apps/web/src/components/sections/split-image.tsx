@@ -10,7 +10,7 @@ type SplitImageProps = PagebuilderType<"splitImage">;
 export function SplitImage({ title, image, orientation }: SplitImageProps) {
   return (
     <section
-      className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse"
+      className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse data-[orientation='imageCenter']:flex-col"
       data-orientation={stegaClean(orientation) || "imageLeft"}
     >
       {image && (
