@@ -70,7 +70,7 @@ export type Geopoint = {
 
 export type SplitImage = {
   _type: "splitImage";
-  orientation?: "imageLeft" | "imageRight";
+  orientation?: "imageLeft" | "imageRight" | "imageCenter";
   title?: string;
   image?: {
     asset?: {
@@ -1310,7 +1310,7 @@ export type QueryHomePageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
-        orientation?: "imageLeft" | "imageRight";
+        orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
         image: {
           asset?: {
@@ -1748,7 +1748,7 @@ export type QuerySlugPageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
-        orientation?: "imageLeft" | "imageRight";
+        orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
         image: {
           asset?: {
@@ -2186,7 +2186,7 @@ export type QueryBlogIndexPageDataResult = {
     | {
         _key: string;
         _type: "splitImage";
-        orientation?: "imageLeft" | "imageRight";
+        orientation?: "imageCenter" | "imageLeft" | "imageRight";
         title?: string;
         image: {
           asset?: {

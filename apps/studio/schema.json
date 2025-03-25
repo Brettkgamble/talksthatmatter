@@ -350,6 +350,10 @@
               {
                 "type": "string",
                 "value": "imageRight"
+              },
+              {
+                "type": "string",
+                "value": "imageCenter"
               }
             ]
           },
