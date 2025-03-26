@@ -12,7 +12,7 @@ export function CTABlock({ richText, title, titleHighlight, backgroundDark, eyeb
     <section id="features" className="my-6 md:my-16">
       <div className="container mx-auto px-4 md:px-8">
         <div
-          className={`py-16 rounded-3xl px-4 ${backgroundDark ? "bg-black" : "bg-muted"}`}
+          className={`py-16 rounded-3xl px-4 dark:${backgroundDark ? "bg-black" : "bg-muted"}`}
         >
           <div className="text-center max-w-3xl mx-auto space-y-8">
             {eyebrow && (
