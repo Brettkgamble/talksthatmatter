@@ -1,4 +1,5 @@
 import { Badge } from "@workspace/ui/components/badge";
+import { SanityImage } from "../sanity-image";
 
 import type { PagebuilderType } from "@/types";
 
@@ -7,13 +8,29 @@ import { SanityButtons } from "../sanity-buttons";
 
 export type CTABlockProps = PagebuilderType<"cta">;
 
-export function CTABlock({ richText, title, titleHighlight, backgroundDark, eyebrow, buttons }: CTABlockProps) {
+export function CTABlock({
+  richText,
+  title,
+  titleHighlight,
+  image,
+  eyebrow,
+  buttons,
+}: CTABlockProps) {
   return (
     <section id="features" className="my-6 md:my-16">
-      <div className="container mx-auto px-4 md:px-8">
-        <div
-          className={`py-16 rounded-3xl px-4 dark:${backgroundDark ? "bg-black" : "bg-muted"}`}
-        >
+      <div className="relative text-center">
+        {image && (
+          <div className="h-96 w-full">
+            <SanityImage
+              asset={image}
+              loading="eager"
+              fill
+              priority
+              quality={80}
+            />
+          </div>
+        )}
+        <div className="w-full absolute top-0 left-0 text-center mt-10">
           <div className="text-center max-w-3xl mx-auto space-y-8">
             {eyebrow && (
               <Badge

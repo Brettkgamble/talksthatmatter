@@ -76,6 +76,7 @@ const buttonsFragment = /* groq */ `
 const ctaBlock = /* groq */ `
   _type == "cta" => {
     ...,
+    ${imageFragment},
     ${richTextFragment},
     ${buttonsFragment},
   }

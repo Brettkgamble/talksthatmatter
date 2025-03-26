@@ -35,6 +35,14 @@ export const cta = defineType({
     }),
     richTextField,
     buttonsField,
+    defineField({
+      name: "image",
+      type: "image",
+      title: "Image",
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
   preview: {
     select: {
