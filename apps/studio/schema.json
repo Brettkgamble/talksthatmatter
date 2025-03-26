@@ -1816,6 +1816,13 @@
           },
           "optional": true
         },
+        "backgroundDark": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "richText": {
           "type": "objectAttribute",
           "value": {

@@ -27,6 +27,12 @@ export const cta = defineType({
       initialValue: false,
       title: "Title Highlight",
     }),
+    defineField({
+      name: "backgroundDark",
+      type: "boolean",
+      initialValue: false,
+      title: "Background Dark or Muted",
+    }),
     richTextField,
     buttonsField,
   ],

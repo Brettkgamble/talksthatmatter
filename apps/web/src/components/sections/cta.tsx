@@ -7,11 +7,13 @@ import { SanityButtons } from "../sanity-buttons";
 
 export type CTABlockProps = PagebuilderType<"cta">;
 
-export function CTABlock({ richText, title, titleHighlight, eyebrow, buttons }: CTABlockProps) {
+export function CTABlock({ richText, title, titleHighlight, backgroundDark, eyebrow, buttons }: CTABlockProps) {
   return (
     <section id="features" className="my-6 md:my-16">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="bg-muted py-16 rounded-3xl px-4">
+        <div
+          className={`py-16 rounded-3xl px-4 ${backgroundDark ? "bg-black" : "bg-muted"}`}
+        >
           <div className="text-center max-w-3xl mx-auto space-y-8">
             {eyebrow && (
               <Badge
@@ -22,7 +24,7 @@ export function CTABlock({ richText, title, titleHighlight, eyebrow, buttons }: 
               </Badge>
             )}
             <h2
-              className={`text-3xl font-semibold md:text-5xl text-balance ${!titleHighlight ? "text-white" : "text-yellow-400"}`}
+              className={`text-5xl font-semibold md:text-7xl text-balance ${!titleHighlight ? "text-white" : "text-yellow-400"}`}
             >
               {title}
             </h2>

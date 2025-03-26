@@ -262,6 +262,7 @@ export type Cta = {
   eyebrow?: string;
   title?: string;
   titleHighlight?: boolean;
+  backgroundDark?: boolean;
   richText?: Array<
     | {
         children?: Array<{
@@ -997,6 +998,7 @@ export type QueryHomePageDataResult = {
         eyebrow?: string;
         title?: string;
         titleHighlight?: boolean;
+        backgroundDark?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1438,6 +1440,7 @@ export type QuerySlugPageDataResult = {
         eyebrow?: string;
         title?: string;
         titleHighlight?: boolean;
+        backgroundDark?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1879,6 +1882,7 @@ export type QueryBlogIndexPageDataResult = {
         eyebrow?: string;
         title?: string;
         titleHighlight?: boolean;
+        backgroundDark?: boolean;
         richText: Array<
           | {
               children?: Array<{
