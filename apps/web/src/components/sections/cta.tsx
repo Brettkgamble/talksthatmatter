@@ -24,7 +24,7 @@ export function CTABlock({ richText, title, titleHighlight, backgroundDark, eyeb
               </Badge>
             )}
             <h2
-              className={`text-5xl font-semibold md:text-7xl text-balance ${!titleHighlight ? "text-white" : "text-yellow-400"}`}
+              className={`text-5xl font-semibold md:text-7xl text-balance  ${!titleHighlight ? "text-white" : "text-yellow-400"}`}
             >
               {title}
             </h2>
