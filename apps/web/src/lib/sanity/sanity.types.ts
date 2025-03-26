@@ -261,6 +261,7 @@ export type Cta = {
   _type: "cta";
   eyebrow?: string;
   title?: string;
+  titleHighlight?: boolean;
   richText?: Array<
     | {
         children?: Array<{
@@ -995,6 +996,7 @@ export type QueryHomePageDataResult = {
         _type: "cta";
         eyebrow?: string;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1435,6 +1437,7 @@ export type QuerySlugPageDataResult = {
         _type: "cta";
         eyebrow?: string;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1875,6 +1878,7 @@ export type QueryBlogIndexPageDataResult = {
         _type: "cta";
         eyebrow?: string;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{

@@ -21,6 +21,12 @@ export const cta = defineType({
       type: "string",
       description: "The large text that is the primary focus of the block",
     }),
+    defineField({
+      name: "titleHighlight",
+      type: "boolean",
+      initialValue: false,
+      title: "Title Highlight",
+    }),
     richTextField,
     buttonsField,
   ],
