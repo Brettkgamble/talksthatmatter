@@ -11,6 +11,7 @@ import { CTABlock } from "./sections/cta";
 import { FaqAccordion } from "./sections/faq-accordion";
 import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
 import { HeroBlock } from "./sections/hero";
+import { IconListCards } from "./sections/icon-list-cards";
 import { ImageLinkCards } from "./sections/image-link-cards";
 import { SplitImage } from "./sections/split-image";
 import { SubscribeNewsletter } from "./sections/subscribe-newsletter";
@@ -38,6 +39,7 @@ const BLOCK_COMPONENTS = {
   splitImage: SplitImage,
   featureCardsIcon: FeatureCardsWithIcon,
   subscribeNewsletter: SubscribeNewsletter,
+  iconListCards: IconListCards,
   imageLinkCards: ImageLinkCards,
 } as const;
 
