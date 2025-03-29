@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { cn } from "@workspace/ui/lib/utils";
 import Link from "next/link";
 
@@ -11,12 +12,12 @@ export type CTACardProps = {
 };
 
 export function IconCard({ card, className }: CTACardProps) {
-  const { image, description, title, href } = card ?? {};
+  const { image, href } = card ?? {};
   return (
     <Link
       href={href ?? "#"}
       className={cn(
-        "rounded-3xl p-4 md:p-8 transition-colors relative overflow-hidden group flex flex-col justify-end xl:h-[50px]",
+        "rounded-3xl p-4 p-8 transition-colors relative overflow-hidden group flex flex-col justify-end h-[50px]",
         className,
       )}
     >
@@ -27,19 +28,11 @@ export function IconCard({ card, className }: CTACardProps) {
             loading="eager"
             priority
             quality={100}
-            // width="1000"
-            // height="250"
             fill
-            className="object-cover  pointer-events-none group-hover:opacity-100 group-hover:transition-opacity duration-1000 "
+            className=" w-full rounded-2xl sm:aspect-[2/1] lg:aspect-[3/2]"
           />
         </div>
       )}
-      {/* <div className="z-[2] pt-64 flex flex-col space-y-2 mb-4 duration-500 xl:absolute xl:top-24 group-hover:top-8 xl:inset-x-8">
-        <h3 className="text-xl font-[500] text-[#111827]">{title}</h3>
-        <p className="text-sm text-[#374151] xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300 delay-150">
-          {description}
-        </p>
-      </div> */}
     </Link>
   );
 }
