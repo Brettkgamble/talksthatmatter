@@ -262,7 +262,7 @@ export type FaqAccordion = {
     description?: string;
     url?: CustomUrl;
   };
-  faqs: Array<{
+  faqs?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -506,11 +506,11 @@ export type Navbar = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label: string;
+  label?: string;
   columns?: Array<
     | {
         title?: string;
-        links: Array<{
+        links?: Array<{
           icon?: IconPicker;
           name?: string;
           description?: string;
@@ -541,7 +541,7 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label: string;
+  label?: string;
   subtitle?: string;
   columns?: Array<{
     title?: string;
@@ -562,9 +562,9 @@ export type Settings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label: string;
-  siteTitle: string;
-  siteDescription: string;
+  label?: string;
+  siteTitle?: string;
+  siteDescription?: string;
   logo?: {
     asset?: {
       _ref: string;
@@ -594,7 +594,7 @@ export type BlogIndex = {
   _rev: string;
   title?: string;
   description?: string;
-  slug: Slug;
+  slug?: Slug;
   displayFeaturedBlogs?: "yes" | "no";
   featuredBlogsCount?: "1" | "2" | "3";
   pageBuilder?: PageBuilder;
@@ -623,7 +623,7 @@ export type HomePage = {
   _rev: string;
   title?: string;
   description?: string;
-  slug: Slug;
+  slug?: Slug;
   pageBuilder?: PageBuilder;
   seoTitle?: string;
   seoDescription?: string;
@@ -648,7 +648,7 @@ export type Author = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name: string;
+  name?: string;
   position?: string;
   image?: {
     asset?: {
@@ -670,7 +670,7 @@ export type Faq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   richText?: RichText;
 };
 
@@ -680,9 +680,9 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   description?: string;
-  slug: Slug;
+  slug?: Slug;
   image?: {
     asset?: {
       _ref: string;
@@ -720,10 +720,10 @@ export type Blog = {
   _updatedAt: string;
   _rev: string;
   orderRank?: string;
-  title: string;
+  title?: string;
   description?: string;
-  slug: Slug;
-  authors: Array<{
+  slug?: Slug;
+  authors?: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -731,7 +731,7 @@ export type Blog = {
     [internalGroqTypeReferenceTo]?: "author";
   }>;
   publishedAt?: string;
-  image: {
+  image?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -764,7 +764,7 @@ export type Blog = {
 
 export type CustomUrl = {
   _type: "customUrl";
-  type: "internal" | "external";
+  type?: "internal" | "external";
   openInNewTab?: boolean;
   external?: string;
   href?: string;
@@ -857,7 +857,7 @@ export type MediaTag = {
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
@@ -908,7 +908,7 @@ export type SanityAssistOutputField = {
 
 export type SanityAssistInstructionContext = {
   _type: "sanity.assist.instruction.context";
-  reference: {
+  reference?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -941,7 +941,7 @@ export type AssistInstructionContext = {
 
 export type SanityAssistInstructionUserInput = {
   _type: "sanity.assist.instruction.userInput";
-  message: string;
+  message?: string;
   description?: string;
 };
 
@@ -1053,7 +1053,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/lib/sanity/query.ts
 // Variable: queryHomePageData
-// Query: *[_type == "homePage" && _id == "homePage"][0]{    ...,    _id,    _type,    "slug": slug.current,    title,    description,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
+// Query: *[_type == "homePage" && _id == "homePage"][0]{    ...,    _id,    _type,    "slug": slug.current,    title,    description,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "splitImage" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
 export type QueryHomePageDataResult = {
   _id: string;
   _type: "homePage";
@@ -1062,7 +1062,7 @@ export type QueryHomePageDataResult = {
   _rev: string;
   title: string | null;
   description: string | null;
-  slug: string;
+  slug: string | null;
   pageBuilder: Array<
     | {
         _key: string;
@@ -1122,12 +1122,26 @@ export type QueryHomePageDataResult = {
           openInNewTab: boolean | null;
           href: string | null;
         }> | null;
+        image: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+          alt: string | "Image-Broken";
+          blurData: string | null;
+          dominantColor: string | null;
+        } | null;
       }
     | {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title: string;
+        title?: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -1137,7 +1151,7 @@ export type QueryHomePageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string;
+          title: string | null;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -1183,7 +1197,7 @@ export type QueryHomePageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }>;
+        }> | null;
       }
     | {
         _key: string;
@@ -1424,8 +1438,8 @@ export type QueryHomePageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title: string;
-          description: string;
+          title?: string;
+          description?: string;
           image: {
             asset?: {
               _ref: string;
@@ -1546,16 +1560,16 @@ export type QueryHomePageDataResult = {
   ogDescription?: string;
 } | null;
 // Variable: querySlugPageData
-// Query: *[_type == "page" && slug.current == $slug][0]{    ...,    "slug": slug.current,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    ...,    "slug": slug.current,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "splitImage" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
 export type QuerySlugPageDataResult = {
   _id: string;
   _type: "page";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: string;
   description?: string;
-  slug: string;
+  slug: string | null;
   image?: {
     asset?: {
       _ref: string;
@@ -1645,7 +1659,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title: string;
+        title?: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -1655,7 +1669,7 @@ export type QuerySlugPageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string;
+          title: string | null;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -1701,7 +1715,7 @@ export type QuerySlugPageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }>;
+        }> | null;
       }
     | {
         _key: string;
@@ -1756,6 +1770,7 @@ export type QuerySlugPageDataResult = {
         _type: "hero";
         badge?: string;
         title?: string;
+        titleHighlight?: boolean;
         richText: Array<
           | {
               children?: Array<{
@@ -1941,8 +1956,8 @@ export type QuerySlugPageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title: string;
-          description: string;
+          title?: string;
+          description?: string;
           image: {
             asset?: {
               _ref: string;
@@ -2065,9 +2080,9 @@ export type QuerySlugPageDataResult = {
 } | null;
 // Variable: querySlugPagePaths
 // Query: *[_type == "page" && defined(slug.current)].slug.current
-export type QuerySlugPagePathsResult = Array<string>;
+export type QuerySlugPagePathsResult = Array<string | null>;
 // Variable: queryBlogIndexPageData
-// Query: *[_type == "blogIndex"][0]{    ...,    _id,    _type,    title,    description,    "displayFeaturedBlogs" : displayFeaturedBlogs == "yes",    "featuredBlogsCount" : featuredBlogsCount,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  },    "slug": slug.current,    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){        _type,  _id,  title,  description,  "slug":slug.current,  richText,  orderRank,    image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  publishedAt,    authors[0]->{    _id,    name,    position,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  }  }    }  }
+// Query: *[_type == "blogIndex"][0]{    ...,    _id,    _type,    title,    description,    "displayFeaturedBlogs" : displayFeaturedBlogs == "yes",    "featuredBlogsCount" : featuredBlogsCount,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "splitImage" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  },    "slug": slug.current,    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){        _type,  _id,  title,  description,  "slug":slug.current,  richText,  orderRank,    image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  publishedAt,    authors[0]->{    _id,    name,    position,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  }  }    }  }
 export type QueryBlogIndexPageDataResult = {
   _id: string;
   _type: "blogIndex";
@@ -2076,7 +2091,7 @@ export type QueryBlogIndexPageDataResult = {
   _rev: string;
   title: string | null;
   description: string | null;
-  slug: string;
+  slug: string | null;
   displayFeaturedBlogs: false | true;
   featuredBlogsCount: "1" | "2" | "3" | null;
   pageBuilder: Array<
@@ -2157,7 +2172,7 @@ export type QueryBlogIndexPageDataResult = {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title: string;
+        title?: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -2167,7 +2182,7 @@ export type QueryBlogIndexPageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string;
+          title: string | null;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -2213,7 +2228,7 @@ export type QueryBlogIndexPageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }>;
+        }> | null;
       }
     | {
         _key: string;
@@ -2454,8 +2469,8 @@ export type QueryBlogIndexPageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title: string;
-          description: string;
+          title?: string;
+          description?: string;
           image: {
             asset?: {
               _ref: string;
@@ -2577,9 +2592,9 @@ export type QueryBlogIndexPageDataResult = {
   blogs: Array<{
     _type: "blog";
     _id: string;
-    title: string;
+    title: string | null;
     description: string | null;
-    slug: string;
+    slug: string | null;
     richText: RichText | null;
     orderRank: string | null;
     image: {
@@ -2595,11 +2610,11 @@ export type QueryBlogIndexPageDataResult = {
       alt: string | "Image-Broken";
       blurData: string | null;
       dominantColor: string | null;
-    };
+    } | null;
     publishedAt: string | null;
     authors: {
       _id: string;
-      name: string;
+      name: string | null;
       position: string | null;
       image: {
         asset?: {
@@ -2619,7 +2634,7 @@ export type QueryBlogIndexPageDataResult = {
   }>;
 } | null;
 // Variable: queryBlogSlugPageData
-// Query: *[_type == "blog" && slug.current == $slug][0]{    ...,    "slug": slug.current,      authors[0]->{    _id,    name,    position,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  }  },      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
+// Query: *[_type == "blog" && slug.current == $slug][0]{    ...,    "slug": slug.current,      authors[0]->{    _id,    name,    position,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  }  },      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "splitImage" => {    ...,      image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),    "blurData": asset->metadata.lqip,    "dominantColor": asset->metadata.palette.dominant.background,  },    })  }  }  }
 export type QueryBlogSlugPageDataResult = {
   _id: string;
   _type: "blog";
@@ -2627,12 +2642,12 @@ export type QueryBlogSlugPageDataResult = {
   _updatedAt: string;
   _rev: string;
   orderRank?: string;
-  title: string;
+  title?: string;
   description?: string;
-  slug: string;
+  slug: string | null;
   authors: {
     _id: string;
-    name: string;
+    name: string | null;
     position: string | null;
     image: {
       asset?: {
@@ -2663,7 +2678,7 @@ export type QueryBlogSlugPageDataResult = {
     alt: string | "Image-Broken";
     blurData: string | null;
     dominantColor: string | null;
-  };
+  } | null;
   richText: Array<
     | {
         children?: Array<{
@@ -2728,7 +2743,7 @@ export type QueryBlogSlugPageDataResult = {
 } | null;
 // Variable: queryBlogPaths
 // Query: *[_type == "blog" && defined(slug.current)].slug.current
-export type QueryBlogPathsResult = Array<string>;
+export type QueryBlogPathsResult = Array<string | null>;
 // Variable: queryHomePageOGData
 // Query: *[_type == "homePage" && _id == $id][0]{      _id,  _type,  "title": select(    defined(ogTitle) => ogTitle,    defined(seoTitle) => seoTitle,    title  ),  "description": select(    defined(ogDescription) => ogDescription,    defined(seoDescription) => seoDescription,    description  ),  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",  "dominantColor": image.asset->metadata.palette.dominant.background,  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max",   "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",  "date": coalesce(date, _createdAt)  }
 export type QueryHomePageOGDataResult = {
@@ -2865,7 +2880,7 @@ export type QueryNavbarDataResult = {
           description: string | null;
           openInNewTab: boolean | null;
           href: string | null;
-        }>;
+        }> | null;
       }
   > | null;
   buttons: Array<{
@@ -2883,11 +2898,11 @@ export type QueryNavbarDataResult = {
 // Query: {  "slugPages": *[_type == "page" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  },  "blogPages": *[_type == "blog" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  }}
 export type QuerySitemapDataResult = {
   slugPages: Array<{
-    slug: string;
+    slug: string | null;
     lastModified: string;
   }>;
   blogPages: Array<{
-    slug: string;
+    slug: string | null;
     lastModified: string;
   }>;
 };
@@ -2896,11 +2911,11 @@ export type QuerySitemapDataResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "homePage" && _id == "homePage"][0]{\n    ...,\n    _id,\n    _type,\n    "slug": slug.current,\n    title,\n    description,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }': QueryHomePageDataResult;
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    ...,\n    "slug": slug.current,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }\n  ': QuerySlugPageDataResult;
+    '*[_type == "homePage" && _id == "homePage"][0]{\n    ...,\n    _id,\n    _type,\n    "slug": slug.current,\n    title,\n    description,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "splitImage" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }': QueryHomePageDataResult;
+    '\n  *[_type == "page" && slug.current == $slug][0]{\n    ...,\n    "slug": slug.current,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "splitImage" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }\n  ': QuerySlugPageDataResult;
     '\n  *[_type == "page" && defined(slug.current)].slug.current\n': QuerySlugPagePathsResult;
-    '\n  *[_type == "blogIndex"][0]{\n    ...,\n    _id,\n    _type,\n    title,\n    description,\n    "displayFeaturedBlogs" : displayFeaturedBlogs == "yes",\n    "featuredBlogsCount" : featuredBlogsCount,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n,\n    "slug": slug.current,\n    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){\n      \n  _type,\n  _id,\n  title,\n  description,\n  "slug":slug.current,\n  richText,\n  orderRank,\n  \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  publishedAt,\n  \n  authors[0]->{\n    _id,\n    name,\n    position,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n\n  }\n\n\n    }\n  }\n': QueryBlogIndexPageDataResult;
-    '\n  *[_type == "blog" && slug.current == $slug][0]{\n    ...,\n    "slug": slug.current,\n    \n  authors[0]->{\n    _id,\n    name,\n    position,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n\n  }\n,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }\n': QueryBlogSlugPageDataResult;
+    '\n  *[_type == "blogIndex"][0]{\n    ...,\n    _id,\n    _type,\n    title,\n    description,\n    "displayFeaturedBlogs" : displayFeaturedBlogs == "yes",\n    "featuredBlogsCount" : featuredBlogsCount,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "splitImage" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n,\n    "slug": slug.current,\n    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){\n      \n  _type,\n  _id,\n  title,\n  description,\n  "slug":slug.current,\n  richText,\n  orderRank,\n  \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  publishedAt,\n  \n  authors[0]->{\n    _id,\n    name,\n    position,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n\n  }\n\n\n    }\n  }\n': QueryBlogIndexPageDataResult;
+    '\n  *[_type == "blog" && slug.current == $slug][0]{\n    ...,\n    "slug": slug.current,\n    \n  authors[0]->{\n    _id,\n    name,\n    position,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n\n  }\n,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  pageBuilder[]{\n    ...,\n    _type,\n    \n  _type == "cta" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n  }\n,\n    \n  _type == "hero" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  }\n,\n    \n  _type == "faqAccordion" => {\n    ...,\n    \n  "faqs": array::compact(faqs[]->{\n    title,\n    _id,\n    _type,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n\n  })\n,\n    link{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      )\n    }\n  }\n,\n    \n  _type == "splitImage" => {\n    ...,\n    \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n  }\n,\n    \n  _type == "subscribeNewsletter" => {\n    ...,\n    "subTitle": subTitle[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    },\n    "helperText": helperText[]{\n      ...,\n      \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n    }\n  }\n,\n    \n  _type == "imageLinkCards" => {\n    ...,\n    \n  richText[]{\n    ...,\n    \n  markDefs[]{\n    ...,\n    \n  ...customLink{\n    openInNewTab,\n    "href": select(\n      type == "internal" => internal->slug.current,\n      type == "external" => external,\n      "#"\n    ),\n  }\n\n  }\n\n  }\n,\n    \n  buttons[]{\n    text,\n    variant,\n    _key,\n    _type,\n    "openInNewTab": url.openInNewTab,\n    "href": select(\n      url.type == "internal" => url.internal->slug.current,\n      url.type == "external" => url.external,\n      url.href\n    ),\n  }\n,\n    "cards": array::compact(cards[]{\n      ...,\n      "openInNewTab": url.openInNewTab,\n      "href": select(\n        url.type == "internal" => url.internal->slug.current,\n        url.type == "external" => url.external,\n        url.href\n      ),\n      \n  image{\n    ...,\n    "alt": coalesce(asset->altText, asset->originalFilename, "Image-Broken"),\n    "blurData": asset->metadata.lqip,\n    "dominantColor": asset->metadata.palette.dominant.background,\n  }\n,\n    })\n  }\n\n  }\n\n  }\n': QueryBlogSlugPageDataResult;
     '\n  *[_type == "blog" && defined(slug.current)].slug.current\n': QueryBlogPathsResult;
     '\n  *[_type == "homePage" && _id == $id][0]{\n    \n  _id,\n  _type,\n  "title": select(\n    defined(ogTitle) => ogTitle,\n    defined(seoTitle) => seoTitle,\n    title\n  ),\n  "description": select(\n    defined(ogDescription) => ogDescription,\n    defined(seoDescription) => seoDescription,\n    description\n  ),\n  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",\n  "dominantColor": image.asset->metadata.palette.dominant.background,\n  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max", \n  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",\n  "date": coalesce(date, _createdAt)\n\n  }\n  ': QueryHomePageOGDataResult;
     '\n  *[_type == "page" && _id == $id][0]{\n    \n  _id,\n  _type,\n  "title": select(\n    defined(ogTitle) => ogTitle,\n    defined(seoTitle) => seoTitle,\n    title\n  ),\n  "description": select(\n    defined(ogDescription) => ogDescription,\n    defined(seoDescription) => seoDescription,\n    description\n  ),\n  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",\n  "dominantColor": image.asset->metadata.palette.dominant.background,\n  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max", \n  "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",\n  "date": coalesce(date, _createdAt)\n\n  }\n': QuerySlugPageOGDataResult;
