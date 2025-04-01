@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import type { Metadata } from "next";
 
 import { getBaseUrl } from "@/config";
@@ -47,10 +46,10 @@ export function getMetaData(data: MetaDataInput): Metadata {
   });
 
   return {
-    title: `${meta.title}`,
+    title: `${meta.title} | Roboto Studio Demo`,
     description: meta.description,
     metadataBase: new URL(baseUrl),
-    creator: "Talks That Matter!",
+    creator: "Roboto Studio Demo",
     authors: [{ name: "Roboto" }],
     icons: {
       icon: `${baseUrl}/favicon.ico`,
