@@ -9,7 +9,7 @@ const useAudioPlayer = () => {
     // references
     const audioPlayer = useRef<HTMLAudioElement>(null);  // reference to our audio component
     const progressBar = useRef<HTMLInputElement>(null);  // reference to progress bar
-    const animationRef = useRef<number>(null); // references the animation
+    const animationRef = useRef<number | null>(null); // references the animation
 
     const changePlayerCurrentTime = useCallback(() => {
         progressBar.current!.style.setProperty(
