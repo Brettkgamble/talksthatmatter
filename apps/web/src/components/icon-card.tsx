@@ -17,7 +17,7 @@ export function IconCard({ card, className }: CTACardProps) {
     <Link
       href={href ?? "#"}
       className={cn(
-        "rounded-3xl p-4 p-8 transition-colors relative overflow-hidden group flex flex-col justify-end h-[50px]",
+        "rounded-3xl p-4 p-8 transition-colors relative overflow-hidden group flex flex-col justify-end h-[80px]",
         className,
       )}
     >
