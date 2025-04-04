@@ -9,6 +9,7 @@ import type { PagebuilderType } from "@/types";
 
 import { CTABlock } from "./sections/cta";
 import { FaqAccordion } from "./sections/faq-accordion";
+import { FeaturedBlog } from "./sections/featuredBlog";
 import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
 import { HeroBlock } from "./sections/hero";
 import { IconListCards } from "./sections/icon-list-cards";
@@ -35,6 +36,7 @@ type PageData = {
 const BLOCK_COMPONENTS = {
   cta: CTABlock,
   faqAccordion: FaqAccordion,
+  featuredBlog: FeaturedBlog,
   hero: HeroBlock,
   splitImage: SplitImage,
   featureCardsIcon: FeatureCardsWithIcon,

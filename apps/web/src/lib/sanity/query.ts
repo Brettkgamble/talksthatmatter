@@ -154,6 +154,12 @@ const splitImageBlock = /* groq */ `
   }
 `;
 
+const featuredBlogBlock = /* groq */ `
+  _type == "featuredBlog" => {
+    ...,
+  }
+`;
+
 const pageBuilderFragment = /* groq */ `
   pageBuilder[]{
     ...,
@@ -161,6 +167,7 @@ const pageBuilderFragment = /* groq */ `
     ${ctaBlock},
     ${heroBlock},
     ${faqAccordionBlock},
+    ${featuredBlogBlock},
     ${splitImageBlock},
     ${subscribeNewsletterBlock},
     ${imageLinkCardsBlock}
