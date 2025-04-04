@@ -11,7 +11,7 @@ type SplitImageProps = PagebuilderType<"splitImage">;
 export function SplitImage({ badge, title, titleHighlight, image, orientation }: SplitImageProps) {
   return (
     <section
-      className="container mx-auto flex gap-8 py-16 data-[orientation='imageRight']:flex-row-reverse data-[orientation='imageCenter']:flex-col"
+      className="container mx-auto flex gap-8 py-16 data-[orientation='imageLeft']:flex-row-reverse data-[orientation='imageRight']:flex-row data-[orientation='imageCenter']:flex-col"
       data-orientation={stegaClean(orientation) || "imageLeft"}
     >
       <div className="grid h-full grid-rows-[auto_1fr_auto] gap-4 items-center justify-items-center text-center lg:items-start lg:justify-items-start lg:text-left">
