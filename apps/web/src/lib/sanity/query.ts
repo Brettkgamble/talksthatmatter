@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { defineQuery } from "next-sanity";
 
 // Base fragments for reusable query parts
@@ -156,7 +157,11 @@ const splitImageBlock = /* groq */ `
 
 const featuredBlogBlock = /* groq */ `
   _type == "featuredBlog" => {
-    ...,
+    blog[0]->{
+      ...,
+      ${blogCardFragment}
+    },
+    title,
   }
 `;
 

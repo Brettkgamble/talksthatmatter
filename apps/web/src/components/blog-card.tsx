@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Link from "next/link";
 
 import type { QueryBlogIndexPageDataResult } from "@/lib/sanity/sanity.types";
