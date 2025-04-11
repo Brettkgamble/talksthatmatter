@@ -2253,7 +2253,21 @@
             "value": "featuredBlog"
           }
         },
+        "episode": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "liveDate": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

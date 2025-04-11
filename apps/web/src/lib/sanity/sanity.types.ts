@@ -326,7 +326,9 @@ export type FeatureCardsIcon = {
 
 export type FeaturedBlog = {
   _type: "featuredBlog";
+  episode?: string;
   title?: string;
+  liveDate?: string;
   blog?: Array<{
     _ref: string;
     _type: "reference";
@@ -1287,7 +1289,9 @@ export type QueryHomePageDataResult = {
     | {
         _key: string;
         _type: "featuredBlog";
+        episode?: string;
         title: string | null;
+        liveDate?: string;
         blog: {
           _id: string;
           _type: "blog";
@@ -1888,7 +1892,9 @@ export type QuerySlugPageDataResult = {
     | {
         _key: string;
         _type: "featuredBlog";
+        episode?: string;
         title: string | null;
+        liveDate?: string;
         blog: {
           _id: string;
           _type: "blog";
@@ -2483,7 +2489,9 @@ export type QueryBlogIndexPageDataResult = {
     | {
         _key: string;
         _type: "featuredBlog";
+        episode?: string;
         title: string | null;
+        liveDate?: string;
         blog: {
           _id: string;
           _type: "blog";

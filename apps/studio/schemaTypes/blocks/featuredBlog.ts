@@ -8,8 +8,22 @@ export const featuredBlog = defineType({
   icon: Images,
   fields: [
     defineField({
-      name: "title",
+      name: "episode",
+      title: "Episode",
+      description: "The episode number of the blog",
       type: "string",
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      description: "The title of the episode.  Typically 001, etc",
+      type: "string",
+    }),
+    defineField({
+      name: "liveDate",
+      title: "Live Date",
+      description: "The date the blog was published",
+      type: "date",
     }),
     defineField({
           name: "blog",
