@@ -71,6 +71,10 @@
   }
 }
 
+@theme inline {
+  --font-mono: 'var(--font-space-mono)';
+}
+
 .sanity-icon {
   svg {
     font-size: 2rem !important;

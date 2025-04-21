@@ -1,7 +1,7 @@
 import "@workspace/ui/globals.css";
 
 import { revalidatePath, revalidateTag } from "next/cache";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
 import { Suspense } from "react";
@@ -28,6 +28,12 @@ const fontMono = Geist_Mono({
   display: "optional",
 });
 
+const fontSpaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-space-mono",
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +44,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
+        className={`${fontGeist.variable} ${fontMono.variable} ${fontSpaceMono.variable} font-geist antialiased`}
       >
         <Providers>
           <Suspense fallback={<NavbarSkeleton />}>
