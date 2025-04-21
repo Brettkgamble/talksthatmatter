@@ -17,7 +17,6 @@ export function FeaturedBlog({
       <div className="relative text-center">
         <div className="w-full absolute top-0 left-0 text-center -mt-10">
           <div className="flex items-center justify-center  ">
-            {/* <span className="text-sm font-semibold md:text-lg text-balance text-white mr-[10px]"> */}
             <span className="text-sm font-spaceMono uppercase md:text-lg text-balance text-white mr-[10px]">
               {title}
             </span>
