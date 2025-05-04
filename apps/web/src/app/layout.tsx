@@ -1,11 +1,7 @@
 import "@workspace/ui/globals.css";
 
-<<<<<<< HEAD
 import { revalidatePath, revalidateTag } from "next/cache";
 import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
-=======
-import { Geist, Geist_Mono } from "next/font/google";
->>>>>>> f7397d5990bb04716e8fb27e36a86d9fa054c21a
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
 import { Suspense } from "react";

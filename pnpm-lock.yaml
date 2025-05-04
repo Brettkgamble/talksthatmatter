@@ -210,11 +210,7 @@ importers:
         version: 12.1.1(eslint@9.25.1(jiti@1.21.6))
       eslint-plugin-turbo:
         specifier: ^2.4.4
-<<<<<<< HEAD
-        version: 2.4.4(eslint@9.23.0(jiti@1.21.6))(turbo@2.5.2)
-=======
         version: 2.4.4(eslint@9.25.1(jiti@1.21.6))(turbo@2.5.0)
->>>>>>> f7397d5990bb04716e8fb27e36a86d9fa054c21a
       globals:
         specifier: ^16.0.0
         version: 16.0.0
@@ -11289,19 +11285,11 @@ snapshots:
     dependencies:
       eslint: 9.25.1(jiti@1.21.6)
 
-<<<<<<< HEAD
-  eslint-plugin-turbo@2.4.4(eslint@9.23.0(jiti@1.21.6))(turbo@2.5.2):
-    dependencies:
-      dotenv: 16.0.3
-      eslint: 9.23.0(jiti@1.21.6)
-      turbo: 2.5.2
-=======
   eslint-plugin-turbo@2.4.4(eslint@9.25.1(jiti@1.21.6))(turbo@2.5.0):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.25.1(jiti@1.21.6)
       turbo: 2.5.0
->>>>>>> f7397d5990bb04716e8fb27e36a86d9fa054c21a
 
   eslint-scope@8.3.0:
     dependencies:
