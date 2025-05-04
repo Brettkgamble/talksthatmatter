@@ -1,7 +1,11 @@
 import "@workspace/ui/globals.css";
 
+<<<<<<< HEAD
 import { revalidatePath, revalidateTag } from "next/cache";
 import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
+=======
+import { Geist, Geist_Mono } from "next/font/google";
+>>>>>>> f7397d5990bb04716e8fb27e36a86d9fa054c21a
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
 import { Suspense } from "react";
@@ -50,35 +54,18 @@ export default async function RootLayout({
           <Suspense fallback={<NavbarSkeleton />}>
             <NavbarServer />
           </Suspense>
-          {(await draftMode()).isEnabled ? (
-            <>
-              {children}
-              <VisualEditing
-                refresh={async (payload) => {
-                  "use server";
-                  if (payload.source === "manual") {
-                    revalidatePath("/", "layout");
-                    return;
-                  }
-                  const id = payload?.document?._id?.startsWith("drafts.")
-                    ? payload?.document?._id.slice(7)
-                    : payload?.document?._id;
-                  const slug = payload?.document?.slug?.current;
-                  const type = payload?.document?._type;
-                  for (const tag of [slug, id, type]) {
-                    if (tag) revalidateTag(tag);
-                  }
-                }}
-              />
-              <PreviewBar />
-            </>
-          ) : (
-            children
-          )}
+          {children}
+
           <Suspense fallback={<FooterSkeleton />}>
             <FooterServer />
           </Suspense>
           <SanityLive />
+          {(await draftMode()).isEnabled && (
+            <>
+              <PreviewBar />
+              <VisualEditing />
+            </>
+          )}
         </Providers>
       </body>
     </html>
