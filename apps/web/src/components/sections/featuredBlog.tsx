@@ -41,7 +41,7 @@ export function FeaturedBlog({
             </div>
           </div>
           {blog?.image && (
-            <div className="md:h-96 w-3/5 mx-auto">
+            <div className="md:h-96 w-4/5 mx-auto">
               <SanityImage
                 asset={blog?.image}
                 loading="eager"
