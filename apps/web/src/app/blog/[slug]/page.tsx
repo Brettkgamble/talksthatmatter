@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { notFound } from "next/navigation";
 import type { PortableTextBlock } from "next-sanity";
 
