@@ -3517,6 +3517,7 @@ export type QueryNavbarDataResult = {
     href: string | null;
   }> | null;
   logo: string | null;
+  siteTitle: string | null;
 } | null;
 // Variable: querySitemapData
 // Query: {  "slugPages": *[_type == "page" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  },  "blogPages": *[_type == "blog" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  }}
