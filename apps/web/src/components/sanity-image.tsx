@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { getImageDimensions } from "@sanity/asset-utils";
 import { cn } from "@workspace/ui/lib/utils";
 import Image, { type ImageProps as NextImageProps } from "next/image";

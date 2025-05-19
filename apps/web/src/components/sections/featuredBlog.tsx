@@ -41,15 +41,16 @@ export function FeaturedBlog({
             </div>
           </div>
           {blog?.image && (
-            <div className="md:h-96 w-4/5 mx-auto">
+            <div className="md:h-96 w-4/5 mx-auto border-2 border-white overflow-hidden">
               <SanityImage
                 asset={blog?.image}
                 loading="eager"
                 width={600}
                 height={600}
                 priority
-                quality={80}
-                className="max-h-96 w-full rounded-3xl object-cover "
+                quality={100}
+                className="max-h-96 w-full rounded-3xl object-contain
+                "
               />
             </div>
           )}
