@@ -1,10 +1,8 @@
-import { stegaClean } from "next-sanity";
-import { SanityImage } from "../sanity-image";
-import { RichText } from "../richtext";
-
 import type { PagebuilderType } from "@/types";
 
 import { AudioPlayer } from "../custom/AudioPlayer";
+import { RichText } from "../richtext";
+import { SanityImage } from "../sanity-image";
 
 type featuredBlogProps = PagebuilderType<"featuredBlog">;
 
@@ -58,7 +56,7 @@ export function FeaturedBlog({
           )}
         </div>
         <div>
-          <AudioPlayer track="https://cdn.simplecast.com/audio/891a8679-333d-44ea-b75f-b1a674ae4218/episodes/d527188a-3f49-4ff6-9c7c-059d4a8af67d/audio/f1f96553-8dbf-44f5-b8fb-3958c363d6a6/default_tc.mp3" />
+          {/* <AudioPlayer track="https://cdn.simplecast.com/audio/891a8679-333d-44ea-b75f-b1a674ae4218/episodes/d527188a-3f49-4ff6-9c7c-059d4a8af67d/audio/f1f96553-8dbf-44f5-b8fb-3958c363d6a6/default_tc.mp3" /> */}
         </div>
       </div>
     </section>
