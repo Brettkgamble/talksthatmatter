@@ -21,7 +21,7 @@ interface Props {
   track: string,
 }
 
-export type AudioPlayerBlockProps = PagebuilderType<"audioPlayer">;
+//export type AudioPlayerBlockProps = PagebuilderType<"audioPlayer">;
 
 const AudioPlayer = ({ chapters =[], track }: Props) => {
 

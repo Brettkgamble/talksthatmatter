@@ -4,6 +4,8 @@ import { RichText } from "../richtext";
 
 import type { PagebuilderType } from "@/types";
 
+import { AudioPlayer } from "../custom/AudioPlayer";
+
 type featuredBlogProps = PagebuilderType<"featuredBlog">;
 
 export function FeaturedBlog({
