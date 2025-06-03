@@ -1,17 +1,16 @@
 /* eslint-disable prettier/prettier */
 'use client'
 import { useSearchParams } from 'next/navigation';
-import styles from './AudioPlayer.module.css';
 import React, { useEffect } from 'react';
-import { useAudioPlayer } from '@/hooks/AudioHook';
-
 // import PropTypes from "prop-types";
-
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BsArrowRightShort } from "react-icons/bs";
 import {FaPlay} from "react-icons/fa";
 import {FaPause} from "react-icons/fa";
-import type { PagebuilderType } from "@/types";
+
+import { useAudioPlayer } from '@/hooks/AudioHook';
+
+import styles from './AudioPlayer.module.css';
 
 interface Props {
   chapters?: {
@@ -20,8 +19,6 @@ interface Props {
   }[],
   track: string,
 }
-
-//export type AudioPlayerBlockProps = PagebuilderType<"audioPlayer">;
 
 const AudioPlayer = ({ chapters =[], track }: Props) => {
 
