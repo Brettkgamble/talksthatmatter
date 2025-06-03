@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client'
 import { useSearchParams } from 'next/navigation';
 import styles from './AudioPlayer.module.css';
@@ -10,6 +11,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { BsArrowRightShort } from "react-icons/bs";
 import {FaPlay} from "react-icons/fa";
 import {FaPause} from "react-icons/fa";
+import type { PagebuilderType } from "@/types";
 
 interface Props {
   chapters?: {
@@ -18,6 +20,8 @@ interface Props {
   }[],
   track: string,
 }
+
+export type AudioPlayerBlockProps = PagebuilderType<"audioPlayer">;
 
 const AudioPlayer = ({ chapters =[], track }: Props) => {
 
