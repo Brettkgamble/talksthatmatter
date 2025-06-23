@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import type {
+  QueryBlogSlugPageDataResult,
   QueryHomePageDataResult,
   QueryImageTypeResult,
 } from "./lib/sanity/sanity.types";
@@ -23,9 +24,8 @@ export type SanityButtonProps = NonNullable<
 // >;
 export type SanityImageProps = NonNullable<QueryImageTypeResult>;
 
-export type SanityRichTextProps = NonNullable<
-  NonNullable<PagebuilderType<"hero">>["richText"]
->;
+export type SanityRichTextProps =
+  NonNullable<QueryBlogSlugPageDataResult>["richText"];
 
 export type SanityRichTextBlock = Extract<
   NonNullable<NonNullable<SanityRichTextProps>[number]>,

@@ -14,11 +14,15 @@ export const hero = defineType({
       name: "badge",
       type: "string",
       title: "Badge",
+      description:
+        "Optional badge text displayed above the title, useful for highlighting new features or promotions",
     }),
     defineField({
       name: "title",
       type: "string",
       title: "Title",
+      description:
+        "The main heading text for the hero section that captures attention",
     }),
     defineField({
       name: "titleHighlight",
@@ -31,6 +35,8 @@ export const hero = defineType({
       name: "image",
       type: "image",
       title: "Image",
+      description:
+        "The main hero image - should be high quality and visually impactful",
       options: {
         hotspot: true,
       },

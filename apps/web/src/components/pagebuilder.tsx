@@ -65,7 +65,7 @@ export function PageBuilder({
   );
 
   return (
-    <main
+    <section
       className="flex flex-col gap-16 my-16 max-w-7xl mx-auto"
       data-sanity={createDataAttribute({
         id: id,
@@ -108,6 +108,6 @@ export function PageBuilder({
           </div>
         );
       })}
-    </main>
+    </section>
   );
 }

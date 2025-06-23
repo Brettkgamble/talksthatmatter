@@ -10,12 +10,19 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/react": "^19.0.12",
     "prettier": "^3.5.3",
     "turbo": "^2.5.3",
+=======
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "prettier": "^3.6.0",
+    "turbo": "^2.5.4",
+>>>>>>> 9e74e16f698c821b5a5be8a03acb197aeb7ae174
     "typescript": "5.7.3"
   },
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@10.12.2",
   "engines": {
     "node": ">=20"
   }

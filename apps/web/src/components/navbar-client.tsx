@@ -31,7 +31,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { useIsMobile } from "@/hooks/use-is-mobile";
-import type { QueryNavbarDataResult } from "@/lib/sanity/sanity.types";
+import type {
+  QueryGlobalSeoSettingsResult,
+  QueryNavbarDataResult,
+} from "@/lib/sanity/sanity.types";
 
 import { Logo } from "./logo";
 import { ModeToggle } from "./mode-toggle";
@@ -106,8 +109,15 @@ function MobileNavbarAccordionColumn({
   );
 }
 
-function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
-  const { logo, siteTitle, columns, buttons } = navbarData ?? {};
+function MobileNavbar({
+  navbarData,
+  settingsData,
+}: {
+  navbarData: QueryNavbarDataResult;
+  settingsData: QueryGlobalSeoSettingsResult;
+}) {
+  const { siteTitle, logo } = settingsData ?? {};
+  const { columns, buttons } = navbarData ?? {};
   const [isOpen, setIsOpen] = useState(false);
 
   const path = usePathname();
@@ -129,7 +139,7 @@ function MobileNavbar({ navbarData }: { navbarData: QueryNavbarDataResult }) {
       <SheetContent className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>
-            <Logo src={logo} alt={siteTitle} priority />
+            {logo && <Logo alt={siteTitle} priority image={logo} />}
           </SheetTitle>
         </SheetHeader>
 
@@ -190,17 +200,17 @@ function NavbarColumnLink({
     <Link
       aria-label={`Link to ${column.name ?? column.href}`}
       href={column.href ?? ""}
-      legacyBehavior
-      passHref
+      // legacyBehavior
+      className={cn(
+        navigationMenuTriggerStyle(),
+        "text-muted-foreground dark:text-neutral-300",
+      )}
+      // passHref
     >
-      <NavigationMenuLink
-        className={cn(
-          navigationMenuTriggerStyle(),
-          "text-muted-foreground dark:text-neutral-300",
-        )}
-      >
-        {column.name}
-      </NavigationMenuLink>
+      {/* <NavigationMenuLink
+        > */}
+      {column.name}
+      {/* </NavigationMenuLink> */}
     </Link>
   );
 }
@@ -287,8 +297,10 @@ export function DesktopNavbar({
 
 const ClientSideNavbar = ({
   navbarData,
+  settingsData,
 }: {
   navbarData: QueryNavbarDataResult;
+  settingsData: QueryGlobalSeoSettingsResult;
 }) => {
   const isMobile = useIsMobile();
 
@@ -297,7 +309,7 @@ const ClientSideNavbar = ({
   }
 
   return isMobile ? (
-    <MobileNavbar navbarData={navbarData} />
+    <MobileNavbar navbarData={navbarData} settingsData={settingsData} />
   ) : (
     <DesktopNavbar navbarData={navbarData} />
   );

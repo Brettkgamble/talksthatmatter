@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { preconnect, prefetchDNS } from "react-dom";
 
 import { FooterServer, FooterSkeleton } from "@/components/footer";
+import { CombinedJsonLd } from "@/components/json-ld";
 import { NavbarServer, NavbarSkeleton } from "@/components/navbar";
 import { PreviewBar } from "@/components/preview-bar";
 import { SanityLive } from "@/lib/sanity/live";
@@ -56,6 +57,7 @@ export default async function RootLayout({
             <FooterServer />
           </Suspense>
           <SanityLive />
+          <CombinedJsonLd includeWebsite includeOrganization />
           {(await draftMode()).isEnabled && (
             <>
               <PreviewBar />
