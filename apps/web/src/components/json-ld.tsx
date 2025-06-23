@@ -123,7 +123,7 @@ export function ArticleJsonLd({ article, settings }: ArticleJsonLdProps) {
 
   const baseUrl = getBaseUrl();
   const articleUrl = `${baseUrl}${article.slug}`;
-  const imageUrl = buildSafeImageUrl(article.image);
+  const imageUrl = buildSafeImageUrl(article.image ?? undefined);
 
   const articleJsonLd: WithContext<Article> = {
     "@context": "https://schema.org",
@@ -191,7 +191,7 @@ export function OrganizationJsonLd({ settings }: OrganizationJsonLdProps) {
   const organizationJsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: settings.siteTitle,
+    name: settings.siteTitle || "Website",
     description: settings.siteDescription || undefined,
     url: baseUrl,
     logo: settings.logo
@@ -226,7 +226,7 @@ export function WebSiteJsonLd({ settings }: WebSiteJsonLdProps) {
   const websiteJsonLd: WithContext<WebSite> = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: settings.siteTitle,
+    name: settings.siteTitle ?? "Website",
     description: settings.siteDescription || undefined,
     url: baseUrl,
     publisher: {
