@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 import "@workspace/ui/globals.css";
 
-import { revalidatePath, revalidateTag } from "next/cache";
 import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";

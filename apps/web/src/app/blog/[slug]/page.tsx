@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import React from "react";
 import { notFound } from "next/navigation";
 import { stegaClean } from "next-sanity";
 
@@ -59,7 +60,7 @@ export default async function BlogSlugPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<React.ReactElement> {
   const { slug } = await params;
   const { data } = await fetchBlogSlugPageData(slug);
   if (!data) return notFound();

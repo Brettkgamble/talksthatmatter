@@ -77,7 +77,7 @@ export type SubscribeNewsletter = {
 export type ImageLinkCards = {
   _type: "imageLinkCards";
   eyebrow?: string;
-  title?: string;
+  title: string;
   richText?: Array<
     | {
         children?: Array<{
@@ -118,8 +118,8 @@ export type ImageLinkCards = {
     } & Button
   >;
   cards?: Array<{
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
     image?: {
       asset?: {
         _ref: string;
@@ -141,7 +141,7 @@ export type ImageLinkCards = {
 export type IconListCards = {
   _type: "iconListCards";
   eyebrow?: string;
-  title?: string;
+  title: string;
   richText?: Array<
     | {
         children?: Array<{
@@ -182,8 +182,8 @@ export type IconListCards = {
     } & Button
   >;
   cards?: Array<{
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
     image?: {
       asset?: {
         _ref: string;
@@ -205,14 +205,14 @@ export type IconListCards = {
 export type FaqAccordion = {
   _type: "faqAccordion";
   eyebrow?: string;
-  title?: string;
+  title: string;
   subtitle?: string;
   link?: {
     title?: string;
     description?: string;
     url?: CustomUrl;
   };
-  faqs?: Array<{
+  faqs: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -274,7 +274,7 @@ export type FeaturedBlog = {
   episode?: string;
   title?: string;
   liveDate?: string;
-  blog?: Array<{
+  blog: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -478,11 +478,11 @@ export type Navbar = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label?: string;
+  label: string;
   columns?: Array<
     | {
         title?: string;
-        links?: Array<{
+        links: Array<{
           icon?: IconPicker;
           name?: string;
           description?: string;
@@ -513,7 +513,7 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label?: string;
+  label: string;
   subtitle?: string;
   columns?: Array<{
     title?: string;
@@ -534,9 +534,9 @@ export type Settings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  label?: string;
-  siteTitle?: string;
-  siteDescription?: string;
+  label: string;
+  siteTitle: string;
+  siteDescription: string;
   logo?: {
     asset?: {
       _ref: string;
@@ -567,7 +567,7 @@ export type BlogIndex = {
   _rev: string;
   title?: string;
   description?: string;
-  slug?: Slug;
+  slug: Slug;
   displayFeaturedBlogs?: "yes" | "no";
   featuredBlogsCount?: "1" | "2" | "3";
   pageBuilder?: PageBuilder;
@@ -597,7 +597,7 @@ export type HomePage = {
   _rev: string;
   title?: string;
   description?: string;
-  slug?: Slug;
+  slug: Slug;
   pageBuilder?: PageBuilder;
   seoTitle?: string;
   seoDescription?: string;
@@ -623,7 +623,7 @@ export type Author = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
+  name: string;
   position?: string;
   image?: {
     asset?: {
@@ -646,7 +646,7 @@ export type Faq = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   richText?: RichText;
 };
 
@@ -656,9 +656,9 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   description?: string;
-  slug?: Slug;
+  slug: Slug;
   image?: {
     asset?: {
       _ref: string;
@@ -698,10 +698,10 @@ export type Blog = {
   _updatedAt: string;
   _rev: string;
   orderRank?: string;
-  title?: string;
+  title: string;
   description?: string;
-  slug?: Slug;
-  authors?: Array<{
+  slug: Slug;
+  authors: Array<{
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -709,7 +709,7 @@ export type Blog = {
     [internalGroqTypeReferenceTo]?: "author";
   }>;
   publishedAt?: string;
-  image?: {
+  image: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -744,7 +744,7 @@ export type Blog = {
 
 export type CustomUrl = {
   _type: "customUrl";
-  type?: "internal" | "external";
+  type: "internal" | "external";
   openInNewTab?: boolean;
   external?: string;
   href?: string;
@@ -825,7 +825,7 @@ export type SanityAssistOutputField = {
 
 export type SanityAssistInstructionContext = {
   _type: "sanity.assist.instruction.context";
-  reference?: {
+  reference: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
@@ -858,7 +858,7 @@ export type AssistInstructionContext = {
 
 export type SanityAssistInstructionUserInput = {
   _type: "sanity.assist.instruction.userInput";
-  message?: string;
+  message: string;
   description?: string;
 };
 
@@ -1027,7 +1027,7 @@ export type Geopoint = {
 
 export type Slug = {
   _type: "slug";
-  current?: string;
+  current: string;
   source?: string;
 };
 
@@ -1129,7 +1129,7 @@ export type QueryHomePageDataResult = {
   _rev: string;
   title: string | null;
   description: string | null;
-  slug: string | null;
+  slug: string;
   pageBuilder: Array<
     | {
         _key: string;
@@ -1224,7 +1224,7 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title?: string;
+        title: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -1234,7 +1234,7 @@ export type QueryHomePageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string | null;
+          title: string;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -1281,7 +1281,7 @@ export type QueryHomePageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }> | null;
+        }>;
       }
     | {
         _key: string;
@@ -1344,12 +1344,12 @@ export type QueryHomePageDataResult = {
           _updatedAt: string;
           _rev: string;
           orderRank: string | null;
-          title: string | null;
+          title: string;
           description: string | null;
-          slug: string | null;
+          slug: string;
           authors: {
             _id: string;
-            name: string | null;
+            name: string;
             position: string | null;
             image:
               | {
@@ -1409,8 +1409,7 @@ export type QueryHomePageDataResult = {
                 hotspot?: SanityImageHotspot;
                 crop?: SanityImageCrop;
                 _type: "image";
-              }
-            | null;
+              };
           richText: RichText | null;
           seoTitle?: string;
           seoDescription?: string;
@@ -1524,7 +1523,7 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "iconListCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText?: Array<
           | {
               children?: Array<{
@@ -1565,8 +1564,8 @@ export type QueryHomePageDataResult = {
           } & Button
         >;
         cards?: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image?: {
             asset?: {
               _ref: string;
@@ -1588,7 +1587,7 @@ export type QueryHomePageDataResult = {
         _key: string;
         _type: "imageLinkCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText: Array<
           | {
               children?: Array<{
@@ -1642,8 +1641,8 @@ export type QueryHomePageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image:
             | {
                 asset?: {
@@ -1802,9 +1801,9 @@ export type QuerySlugPageDataResult = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title?: string;
+  title: string;
   description?: string;
-  slug: string | null;
+  slug: string;
   image?: {
     asset?: {
       _ref: string;
@@ -1911,7 +1910,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title?: string;
+        title: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -1921,7 +1920,7 @@ export type QuerySlugPageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string | null;
+          title: string;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -1968,7 +1967,7 @@ export type QuerySlugPageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }> | null;
+        }>;
       }
     | {
         _key: string;
@@ -2031,12 +2030,12 @@ export type QuerySlugPageDataResult = {
           _updatedAt: string;
           _rev: string;
           orderRank: string | null;
-          title: string | null;
+          title: string;
           description: string | null;
-          slug: string | null;
+          slug: string;
           authors: {
             _id: string;
-            name: string | null;
+            name: string;
             position: string | null;
             image:
               | {
@@ -2096,8 +2095,7 @@ export type QuerySlugPageDataResult = {
                 hotspot?: SanityImageHotspot;
                 crop?: SanityImageCrop;
                 _type: "image";
-              }
-            | null;
+              };
           richText: RichText | null;
           seoTitle?: string;
           seoDescription?: string;
@@ -2211,7 +2209,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "iconListCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText?: Array<
           | {
               children?: Array<{
@@ -2252,8 +2250,8 @@ export type QuerySlugPageDataResult = {
           } & Button
         >;
         cards?: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image?: {
             asset?: {
               _ref: string;
@@ -2275,7 +2273,7 @@ export type QuerySlugPageDataResult = {
         _key: string;
         _type: "imageLinkCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText: Array<
           | {
               children?: Array<{
@@ -2329,8 +2327,8 @@ export type QuerySlugPageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image:
             | {
                 asset?: {
@@ -2484,7 +2482,7 @@ export type QuerySlugPageDataResult = {
 } | null;
 // Variable: querySlugPagePaths
 // Query: *[_type == "page" && defined(slug.current)].slug.current
-export type QuerySlugPagePathsResult = Array<string | null>;
+export type QuerySlugPagePathsResult = Array<string>;
 // Variable: queryBlogIndexPageData
 // Query: *[_type == "blogIndex"][0]{    ...,    _id,    _type,    title,    description,    "displayFeaturedBlogs" : displayFeaturedBlogs == "yes",    "featuredBlogsCount" : featuredBlogsCount,      pageBuilder[]{    ...,    _type,      _type == "cta" => {    ...,      image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },  },      _type == "hero" => {    ...,      image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  },      _type == "faqAccordion" => {    ...,      "faqs": array::compact(faqs[]->{    title,    _id,    _type,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  }  }),    link{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      )    }  },      _type == "featuredBlog" => {    blog[0]->{      ...,        _type,  _id,  title,  description,  "slug":slug.current,  richText,  orderRank,    image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },  publishedAt,    authors[0]->{    _id,    name,    position,      image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  }  }    },    title,  },      _type == "splitImage" => {    ...,      image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },  },      _type == "subscribeNewsletter" => {    ...,    "subTitle": subTitle[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    },    "helperText": helperText[]{      ...,        markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }    }  },      _type == "imageLinkCards" => {    ...,      richText[]{    ...,      markDefs[]{    ...,      ...customLink{    openInNewTab,    "href": select(      type == "internal" => internal->slug.current,      type == "external" => external,      "#"    ),  }  }  },      buttons[]{    text,    variant,    _key,    _type,    "openInNewTab": url.openInNewTab,    "href": select(      url.type == "internal" => url.internal->slug.current,      url.type == "external" => url.external,      url.href    ),  },    "cards": array::compact(cards[]{      ...,      "openInNewTab": url.openInNewTab,      "href": select(        url.type == "internal" => url.internal->slug.current,        url.type == "external" => url.external,        url.href      ),        image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },    })  }  },    "slug": slug.current,    "blogs": *[_type == "blog" && (seoHideFromLists != true)] | order(orderRank asc){        _type,  _id,  title,  description,  "slug":slug.current,  richText,  orderRank,    image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  },  publishedAt,    authors[0]->{    _id,    name,    position,      image{    ...,    ...asset->{      "alt": coalesce(altText, originalFilename, "no-alt"),      "blurData": metadata.lqip,      "dominantColor": metadata.palette.dominant.background    },  }  }    }  }
 export type QueryBlogIndexPageDataResult = {
@@ -2495,7 +2493,7 @@ export type QueryBlogIndexPageDataResult = {
   _rev: string;
   title: string | null;
   description: string | null;
-  slug: string | null;
+  slug: string;
   displayFeaturedBlogs: false | true;
   featuredBlogsCount: "1" | "2" | "3" | null;
   pageBuilder: Array<
@@ -2592,7 +2590,7 @@ export type QueryBlogIndexPageDataResult = {
         _key: string;
         _type: "faqAccordion";
         eyebrow?: string;
-        title?: string;
+        title: string;
         subtitle?: string;
         link: {
           title?: string;
@@ -2602,7 +2600,7 @@ export type QueryBlogIndexPageDataResult = {
           href: string | null;
         } | null;
         faqs: Array<{
-          title: string | null;
+          title: string;
           _id: string;
           _type: "faq";
           richText: Array<
@@ -2649,7 +2647,7 @@ export type QueryBlogIndexPageDataResult = {
                 markDefs: null;
               }
           > | null;
-        }> | null;
+        }>;
       }
     | {
         _key: string;
@@ -2712,12 +2710,12 @@ export type QueryBlogIndexPageDataResult = {
           _updatedAt: string;
           _rev: string;
           orderRank: string | null;
-          title: string | null;
+          title: string;
           description: string | null;
-          slug: string | null;
+          slug: string;
           authors: {
             _id: string;
-            name: string | null;
+            name: string;
             position: string | null;
             image:
               | {
@@ -2777,8 +2775,7 @@ export type QueryBlogIndexPageDataResult = {
                 hotspot?: SanityImageHotspot;
                 crop?: SanityImageCrop;
                 _type: "image";
-              }
-            | null;
+              };
           richText: RichText | null;
           seoTitle?: string;
           seoDescription?: string;
@@ -2892,7 +2889,7 @@ export type QueryBlogIndexPageDataResult = {
         _key: string;
         _type: "iconListCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText?: Array<
           | {
               children?: Array<{
@@ -2933,8 +2930,8 @@ export type QueryBlogIndexPageDataResult = {
           } & Button
         >;
         cards?: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image?: {
             asset?: {
               _ref: string;
@@ -2956,7 +2953,7 @@ export type QueryBlogIndexPageDataResult = {
         _key: string;
         _type: "imageLinkCards";
         eyebrow?: string;
-        title?: string;
+        title: string;
         richText: Array<
           | {
               children?: Array<{
@@ -3010,8 +3007,8 @@ export type QueryBlogIndexPageDataResult = {
           href: string | null;
         }> | null;
         cards: Array<{
-          title?: string;
-          description?: string;
+          title: string;
+          description: string;
           image:
             | {
                 asset?: {
@@ -3164,9 +3161,9 @@ export type QueryBlogIndexPageDataResult = {
   blogs: Array<{
     _type: "blog";
     _id: string;
-    title: string | null;
+    title: string;
     description: string | null;
-    slug: string | null;
+    slug: string;
     richText: RichText | null;
     orderRank: string | null;
     image:
@@ -3196,12 +3193,11 @@ export type QueryBlogIndexPageDataResult = {
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
           _type: "image";
-        }
-      | null;
+        };
     publishedAt: string | null;
     authors: {
       _id: string;
-      name: string | null;
+      name: string;
       position: string | null;
       image:
         | {
@@ -3244,12 +3240,12 @@ export type QueryBlogSlugPageDataResult = {
   _updatedAt: string;
   _rev: string;
   orderRank?: string;
-  title?: string;
+  title: string;
   description?: string;
-  slug: string | null;
+  slug: string;
   authors: {
     _id: string;
-    name: string | null;
+    name: string;
     position: string | null;
     image:
       | {
@@ -3309,8 +3305,7 @@ export type QueryBlogSlugPageDataResult = {
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
         _type: "image";
-      }
-    | null;
+      };
   richText: Array<
     | {
         children?: Array<{
@@ -3377,7 +3372,7 @@ export type QueryBlogSlugPageDataResult = {
 } | null;
 // Variable: queryBlogPaths
 // Query: *[_type == "blog" && defined(slug.current)].slug.current
-export type QueryBlogPathsResult = Array<string | null>;
+export type QueryBlogPathsResult = Array<string>;
 // Variable: queryHomePageOGData
 // Query: *[_type == "homePage" && _id == $id][0]{      _id,  _type,  "title": select(    defined(ogTitle) => ogTitle,    defined(seoTitle) => seoTitle,    title  ),  "description": select(    defined(ogDescription) => ogDescription,    defined(seoDescription) => seoDescription,    description  ),  "image": image.asset->url + "?w=566&h=566&dpr=2&fit=max",  "dominantColor": image.asset->metadata.palette.dominant.background,  "seoImage": seoImage.asset->url + "?w=1200&h=630&dpr=2&fit=max",   "logo": *[_type == "settings"][0].logo.asset->url + "?w=80&h=40&dpr=3&fit=max&q=100",  "date": coalesce(date, _createdAt)  }
 export type QueryHomePageOGDataResult = {
@@ -3505,7 +3500,7 @@ export type QueryNavbarDataResult = {
           description: string | null;
           openInNewTab: boolean | null;
           href: string | null;
-        }> | null;
+        }>;
       }
   > | null;
   buttons: Array<{
@@ -3521,11 +3516,11 @@ export type QueryNavbarDataResult = {
 // Query: {  "slugPages": *[_type == "page" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  },  "blogPages": *[_type == "blog" && defined(slug.current)]{    "slug": slug.current,    "lastModified": _updatedAt  }}
 export type QuerySitemapDataResult = {
   slugPages: Array<{
-    slug: string | null;
+    slug: string;
     lastModified: string;
   }>;
   blogPages: Array<{
-    slug: string | null;
+    slug: string;
     lastModified: string;
   }>;
 };
@@ -3534,7 +3529,7 @@ export type QuerySitemapDataResult = {
 export type QueryGlobalSeoSettingsResult = {
   _id: string;
   _type: "settings";
-  siteTitle: string | null;
+  siteTitle: string;
   logo:
     | {
         asset?: {
@@ -3564,7 +3559,7 @@ export type QueryGlobalSeoSettingsResult = {
         _type: "image";
       }
     | null;
-  siteDescription: string | null;
+  siteDescription: string;
   socialLinks: {
     linkedin: string | null;
     facebook: string | null;
@@ -3578,8 +3573,8 @@ export type QueryGlobalSeoSettingsResult = {
 export type QuerySettingsDataResult = {
   _id: string;
   _type: "settings";
-  siteTitle: string | null;
-  siteDescription: string | null;
+  siteTitle: string;
+  siteDescription: string;
   logo: string | null;
   socialLinks: {
     linkedin?: string;

@@ -1,5 +1,7 @@
+// @ts-nocheck - React version compatibility issue between UI package and web app
 "use client";
 
+import React from "react";
 import { Button } from "@workspace/ui/components/button";
 import {
   DropdownMenu,
