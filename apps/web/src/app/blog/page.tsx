@@ -128,7 +128,7 @@ export default async function BlogIndexPage() {
             <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>
-      )}
+      )}p
 
       {pageBuilder && pageBuilder.length > 0 && (
         <PageBuilder pageBuilder={pageBuilder} id={_id} type={_type} />
