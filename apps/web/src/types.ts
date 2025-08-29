@@ -3,7 +3,7 @@ import type {
   QueryBlogSlugPageDataResult,
   QueryHomePageDataResult,
   QueryImageTypeResult,
-} from "./lib/sanity/sanity.types";
+} from "@/lib/sanity/sanity.types";
 
 export type PageBuilderBlockTypes = NonNullable<
   NonNullable<QueryHomePageDataResult>["pageBuilder"]
@@ -18,10 +18,6 @@ export type SanityButtonProps = NonNullable<
   NonNullable<PagebuilderType<"hero">>["buttons"]
 >[number];
 
-// export type SanityImageProps = Extract<
-//   NonNullable<QueryImageTypeResult>,
-//   { alt: string; blurData: string | null; dominantColor: string | null }
-// >;
 export type SanityImageProps = NonNullable<QueryImageTypeResult>;
 
 export type SanityRichTextProps =

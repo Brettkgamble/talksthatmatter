@@ -1,15 +1,24 @@
 /* eslint-disable prettier/prettier */
 import { defineQuery } from "next-sanity";
 
+const imageFields = /* groq */ `
+  "id": asset._ref,
+  "preview": asset->metadata.lqip,
+  hotspot {
+    x,
+    y
+  },
+  crop {
+    bottom,
+    left,
+    right,
+    top
+  }
+`;
 // Base fragments for reusable query parts
 const imageFragment = /* groq */ `
-  image{
-    ...,
-    ...asset->{
-      "alt": coalesce(altText, originalFilename, "no-alt"),
-      "blurData": metadata.lqip,
-      "dominantColor": metadata.palette.dominant.background
-    },
+  image {
+    ${imageFields}
   }
 `;
 
@@ -34,7 +43,14 @@ const markDefsFragment = /* groq */ `
 const richTextFragment = /* groq */ `
   richText[]{
     ...,
-    ${markDefsFragment}
+    _type == "block" => {
+      ...,
+      ${markDefsFragment}
+    },
+    _type == "image" => {
+      ${imageFields},
+      "caption": caption
+    }
   }
 `;
 
@@ -53,7 +69,6 @@ const blogCardFragment = /* groq */ `
   title,
   description,
   "slug":slug.current,
-  richText,
   orderRank,
   ${imageFragment},
   publishedAt,
@@ -364,13 +379,8 @@ export const queryGlobalSeoSettings = defineQuery(`
     _id,
     _type,
     siteTitle,
-    logo{
-      ...,
-      ...asset->{
-        "alt": coalesce(altText, originalFilename, "no-alt"),
-        "blurData": metadata.lqip,
-        "dominantColor": metadata.palette.dominant.background
-      }
+    logo {
+      ${imageFields}
     },
     siteDescription,
     socialLinks{
